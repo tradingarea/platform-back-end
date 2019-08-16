@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2019/8/13 23:15
  */
 @RestController
-public class Index {
+public class IndexController {
 
     @RequestMapping("/")
     public String index() {
