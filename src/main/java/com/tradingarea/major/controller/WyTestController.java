@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -25,10 +24,10 @@ public class WyTestController {
     @RequestMapping("/")
     public Map<String, Object> findAllById() {
         int code = 200;
-        String data = "请求成功";
+        String msg = "请求成功";
         WyTest wyTest = wyTestRepository.findAllById((long) 1);
 
-        return ResUtil.resMap(code, data, wyTest);
+        return ResUtil.resMap(code, msg, wyTest);
     }
 
 }
