@@ -3,6 +3,7 @@ package com.tradingarea.major.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.sql.Timestamp;
 
@@ -14,7 +15,7 @@ import java.sql.Timestamp;
 @Entity
 public class Bussiness {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column
@@ -48,8 +49,19 @@ public class Bussiness {
     private Timestamp updatetime;
 
     public Bussiness() {
+   
     }
-
+    public Bussiness(String name,String introduction,String detail,String address,String logo,String picture,Integer status,Integer level) {
+  
+    	  this.name=name;
+    	  this.introduction=introduction;
+    	  this.detail=detail;
+    	  this.address=address;
+    	  this.logo=logo;
+    	  this.picture=picture;
+    	  this.status=status;
+    	  this.level=level;
+    }
     public Integer getId() {
         return id;
     }
