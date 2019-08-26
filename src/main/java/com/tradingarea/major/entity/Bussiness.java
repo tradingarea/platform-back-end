@@ -15,6 +15,7 @@ import java.sql.Timestamp;
 @Entity
 public class Bussiness {
     @Id
+    //自增长主键 strategy = GenerationType.IDENTITY
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
