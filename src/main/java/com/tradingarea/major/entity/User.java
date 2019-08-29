@@ -1,6 +1,7 @@
 package com.tradingarea.major.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.sql.Timestamp;
@@ -11,6 +12,7 @@ import java.sql.Timestamp;
  * 用户实体
  * @create:2019-08-26 15:02
  */
+@Entity
 public class User {
 
     @Id
@@ -57,6 +59,22 @@ public class User {
     private Timestamp updatetime;
 
     public User() {
+    }
+
+    public User(String password, String name, Integer phonenum, String sex, String avatar, String mail, String wxid, Integer type, Integer status, Integer ismember, Integer invitenum, Timestamp createdtime, Timestamp updatetime) {
+        this.password = password;
+        this.name = name;
+        this.phonenum = phonenum;
+        this.sex = sex;
+        this.avatar = avatar;
+        this.mail = mail;
+        this.wxid = wxid;
+        this.type = type;
+        this.status = status;
+        this.ismember = ismember;
+        this.invitenum = invitenum;
+        this.createdtime = createdtime;
+        this.updatetime = updatetime;
     }
 
     public Integer getId() {
@@ -169,25 +187,5 @@ public class User {
 
     public void setUpdatetime(Timestamp updatetime) {
         this.updatetime = updatetime;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", phonenum=" + phonenum +
-                ", sex='" + sex + '\'' +
-                ", avatar='" + avatar + '\'' +
-                ", mail='" + mail + '\'' +
-                ", wxid='" + wxid + '\'' +
-                ", type=" + type +
-                ", status=" + status +
-                ", ismember=" + ismember +
-                ", invitenum=" + invitenum +
-                ", createdtime=" + createdtime +
-                ", updatetime=" + updatetime +
-                '}';
     }
 }

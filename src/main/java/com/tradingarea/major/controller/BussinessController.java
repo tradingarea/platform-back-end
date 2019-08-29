@@ -27,13 +27,38 @@ public class BussinessController {
 	@Autowired
 	BussinessRepository bussinessRepository;
 
+    /*
+     * 查询最新10条商户信息
+     *
+     */
+    @RequestMapping("/findLastest5")
+    public Map<String, Object> findLastest5() {
+        int code = 200;
+        String msg = "请求成功";
+        List<Bussiness> res = bussinessRepository.findLastest5();
+        return ResUtil.resMap(code, msg, res);
+    }
+
+    /*
+     * 根据ID查询
+     */
+    @RequestMapping("/findById")
+    public Map<String, Object> findById(int id) {
+        int code = 200;
+        String msg = "请求成功";
+        Bussiness res = bussinessRepository.findAllById(id);
+        return ResUtil.resMap(code, msg, res);
+    }
+
+	/****************************************************************************************/
+
 	/*
 	 * 新增用户
 	 */
 	@RequestMapping("/savebusiness")
 	public String save() {
 		System.out.println("添加用户");
-		bussinessRepository.save(new Bussiness("商圈", "introduction", "detail", "address", "logo", "picture", 1, 1));
+//		bussinessRepository.save();
 		return "save";
 	}
 
@@ -76,17 +101,7 @@ public class BussinessController {
 		return ResUtil.resMap(code, msg, list);
 	}
 
-	/*
-	 * 查询表中所有数据
-	 *
-	 */
-	@RequestMapping("/findAll")
-	public Map<String, Object> toIndex() {
-		int code = 200;
-		String msg = "请求成功";
-		List<Bussiness> findAll = bussinessRepository.findAll();
-		return ResUtil.resMap(code, msg, findAll);
-	}
+
 
 	/*
 	 * 根据ID修改用户信息
@@ -124,23 +139,6 @@ public class BussinessController {
 		PageRequest pageable = PageRequest.of(0, 5);
 
 		Page<Bussiness> page = bussinessRepository.findByName("商圈", pageable);
-		/*
-		 * //查询结果总行数
-		 * 
-		 * System.out.println(page.getTotalElements());
-		 * 
-		 * //按照当前分页大小，总页数
-		 * 
-		 * System.out.println(page.getTotalPages());
-		 * 
-		 * //按照当前页数、分页大小，查出的分页结果集合
-		 * 
-		 * for (Bussiness bussiness: page.getContent()) {
-		 * 
-		 * System.out.println(bussiness.toString());
-		 * 
-		 * }
-		 */
 
 		return ResUtil.resMap(code, msg, page);
 	}

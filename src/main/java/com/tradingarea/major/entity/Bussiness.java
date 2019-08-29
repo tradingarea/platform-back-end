@@ -15,9 +15,11 @@ import java.sql.Timestamp;
 @Entity
 public class Bussiness {
     @Id
-    //自增长主键 strategy = GenerationType.IDENTITY
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Integer id;
+
+    @Column
+    private String userid;
 
     @Column
     private String name;
@@ -49,26 +51,36 @@ public class Bussiness {
     @Column
     private Timestamp updatetime;
 
-    public Bussiness() {
-   
+    public Bussiness() {}
+
+    public Bussiness(String userid, String name, String introduction, String detail, String address, String logo, String picture, Integer status, Integer level, Timestamp createdtime, Timestamp updatetime) {
+        this.userid = userid;
+        this.name = name;
+        this.introduction = introduction;
+        this.detail = detail;
+        this.address = address;
+        this.logo = logo;
+        this.picture = picture;
+        this.status = status;
+        this.level = level;
+        this.createdtime = createdtime;
+        this.updatetime = updatetime;
     }
-    public Bussiness(String name,String introduction,String detail,String address,String logo,String picture,Integer status,Integer level) {
-  
-    	  this.name=name;
-    	  this.introduction=introduction;
-    	  this.detail=detail;
-    	  this.address=address;
-    	  this.logo=logo;
-    	  this.picture=picture;
-    	  this.status=status;
-    	  this.level=level;
-    }
+
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
 
     public String getName() {
@@ -149,22 +161,5 @@ public class Bussiness {
 
     public void setUpdatetime(Timestamp updatetime) {
         this.updatetime = updatetime;
-    }
-
-    @Override
-    public String toString() {
-        return "Bussiness{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", introduction='" + introduction + '\'' +
-                ", detail='" + detail + '\'' +
-                ", address='" + address + '\'' +
-                ", logo='" + logo + '\'' +
-                ", picture='" + picture + '\'' +
-                ", status=" + status +
-                ", level=" + level +
-                ", createdtime=" + createdtime +
-                ", updatetime=" + updatetime +
-                '}';
     }
 }
